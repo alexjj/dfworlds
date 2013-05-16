@@ -5,6 +5,8 @@ from os import environ
 
 from base import *
 
+import dj_database_url
+
 # Normally you should not import ANYTHING from Django directly
 # into your settings, but ImproperlyConfigured is an exception.
 from django.core.exceptions import ImproperlyConfigured
@@ -31,7 +33,7 @@ EMAIL_HOST = environ.get('EMAIL_HOST', 'smtp.gmail.com')
 EMAIL_HOST_PASSWORD = environ.get('EMAIL_HOST_PASSWORD', '')
 
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#email-host-user
-EMAIL_HOST_USER = environ.get('EMAIL_HOST_USER', 'your_email@example.com')
+EMAIL_HOST_USER = environ.get('EMAIL_HOST_USER', 'alexjj@gmail.com')
 
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#email-port
 EMAIL_PORT = environ.get('EMAIL_PORT', 587)
@@ -48,7 +50,7 @@ SERVER_EMAIL = EMAIL_HOST_USER
 
 
 ########## DATABASE CONFIGURATION
-DATABASES = {}
+DATABASES = {'default': dj_database_url.config()}
 ########## END DATABASE CONFIGURATION
 
 

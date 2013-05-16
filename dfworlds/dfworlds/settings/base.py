@@ -33,7 +33,7 @@ TEMPLATE_DEBUG = DEBUG
 ########## MANAGER CONFIGURATION
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#admins
 ADMINS = (
-    ('Your Name', 'your_email@example.com'),
+    ('Alex Johnstone', 'alexjj@gmail.com'),
 )
 
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#managers
@@ -45,8 +45,8 @@ MANAGERS = ADMINS
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#databases
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.',
-        'NAME': '',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'dfworlds',
         'USER': '',
         'PASSWORD': '',
         'HOST': '',
@@ -58,10 +58,10 @@ DATABASES = {
 
 ########## GENERAL CONFIGURATION
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#time-zone
-TIME_ZONE = 'America/Los_Angeles'
+TIME_ZONE = 'Europe/London'
 
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#language-code
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'en-gb'
 
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#site-id
 SITE_ID = 1
@@ -190,7 +190,7 @@ THIRD_PARTY_APPS = (
 )
 
 # Apps specific for this project go here.
-LOCAL_APPS = (
+LOCAL_APPS = ('worlds',
 )
 
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
