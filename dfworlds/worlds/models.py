@@ -2,7 +2,12 @@ from django.db import models
 from django.template.defaultfilters import slugify
 from django.contrib.auth.models import User
 
-# Create your models here.
+class PostManager(models.Manager):
+
+    def live(self):
+        return self.model.objects.filter(published=True)
+
+
 class World(models.Model):
     DF_VERSION = (
         ('v34', '34.11'),
@@ -22,15 +27,15 @@ class World(models.Model):
     has_aquifer = models.BooleanField()
     has_river = models.CharField(max_length=5, choices=HAS_RIVER)
     embark_size = models.CharField(max_length=5)
-    embark_loc_img = URLField(max_length=255)
+    embark_loc_img = models.URLField(max_length=255)
     has_iron = models.BooleanField()
     has_candy = models.BooleanField()
     worldgen = models.TextField()
     prospect = models.TextField()
     slug = models.SlugField(max_length=255, blank=True, default='')
     author = models.ForeignKey(User, related_name="worlds")
-    prepopulated_fields = {"slug": ("title",)}
-    search_fields = ["title", "df_version", "embark_size", "prospect"]
+    published = models.BooleanField(default=True)
+    objects = PostManager()
 
     class Meta:
         ordering = ["-created_at", "df_version"]
@@ -42,3 +47,7 @@ class World(models.Model):
         if not self.slug:
             self.slug = slugify(self.title)
         super(World, self).save(*args, **kwargs)
+
+    @models.permalink
+    def get_absolute_url(self):
+        return ('worlds:detail', (), {'slug':self.slug})

@@ -2,9 +2,9 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>{% block title %}dfworlds{% endblock title %}</title>
+    <title>{% block title %}df worlds{% endblock title %}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
+    <meta name="description" content="DF Worlds repo">
     <meta name="author" content="">
 
     <!-- Le styles -->
@@ -39,12 +39,12 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </a>
-          <a class="brand" href="#">dfworlds</a>
+          <a class="brand" href="..">dfworlds</a>
           <div class="nav-collapse collapse">
             <ul class="nav">
               <li class="active"><a href="#">Home</a></li>
-              <li><a href="#about">About</a></li>
-              <li><a href="#contact">Contact</a></li>
+              <li><a href="{% url 'worlds:list' %}">World List</a></li>
+              <li><a href="../admin">Admin</a></li>
             </ul>
           </div><!--/.nav-collapse -->
         </div>
@@ -53,11 +53,11 @@
 
     <div class="container">
 
-      <h1>{% block page_title %}Example Base Template{% endblock page_title %}</h1>
+      <h1>{% block page_title %}Welcone to DF Worlds!{% endblock page_title %}</h1>
 
-      {% block content %}
-        <p>Use this document as a way to quick start any new project.</p>
-      {% endblock content %}
+      {% block page_content %}
+        <p>A great repo of worlds await...</p>
+      {% endblock page_content %}
 
     </div> <!-- /container -->
 

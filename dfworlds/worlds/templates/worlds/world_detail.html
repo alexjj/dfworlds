@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+{% block page_title %}{{ world.title }} | {% endblock %}
+
+{% block page_content %}
+<h2>{{ world.title }}</h2>
+{{ world.worldgen|linebreaks }}
+<p>{{ world.created_at }}</p>
+<p><a href="{% url 'worlds:list' %}">&larr; World list</a></p>
+{% endblock %}

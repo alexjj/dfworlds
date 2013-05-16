@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block page_title %}World List | {% endblock %}
+
+{% block page_content %}
+<h2>DF Worlds</h2>
+
+<ul>
+    {% for world in world_list %}
+    <li><a href="{{ worlds.get_absolute_url }}">{{ world.title }}</a></li>
+    {% empty %}
+    <li>Sorry, no worlds yet...</li>
+    {% endfor %}
+</ul>
+{% endblock %}
