@@ -27,7 +27,7 @@ class World(models.Model):
     has_candy = models.BooleanField(default=False)
     worldgen = models.TextField(default='')
     prospect = models.TextField(default='')
-    slug = models.SlugField(max_length=255, blank=True, default='', )
+    slug = models.SlugField(max_length=255, blank=True, default='', editable=False)
     author = models.ForeignKey(User, related_name="worlds")
     published = models.BooleanField(default=True)
 
