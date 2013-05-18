@@ -1,17 +1,16 @@
-from django.views.generic import ListView, DetailView
-from worlds.models import World
-
-class PublishedPostMixin(object):
-
-    def get_queryset(self):
-        return self.model.objects.live()
+from django.views.generic import ListView, DetailView, CreateView
+from .models import World
 
 
-class WorldListView(PublishedPostMixin, ListView):
+class WorldListView(ListView):
 
     model = World
 
 
-class WorldDetailView(PublishedPostMixin, DetailView):
+class WorldDetailView(DetailView):
 
+    model = World
+
+
+class AddWorldView(CreateView):
     model = World

@@ -2,11 +2,6 @@ from django.db import models
 from django.template.defaultfilters import slugify
 from django.contrib.auth.models import User
 
-class PostManager(models.Manager):
-
-    def live(self):
-        return self.model.objects.filter(published=True)
-
 
 class World(models.Model):
     DF_VERSION = (
@@ -27,7 +22,7 @@ class World(models.Model):
     has_aquifer = models.BooleanField()
     has_river = models.CharField(max_length=5, choices=HAS_RIVER)
     embark_size = models.CharField(max_length=5)
-    embark_loc_img = models.URLField(max_length=255)
+    embark_loc_img = models.URLField()
     has_iron = models.BooleanField()
     has_candy = models.BooleanField()
     worldgen = models.TextField()
@@ -35,7 +30,6 @@ class World(models.Model):
     slug = models.SlugField(max_length=255, blank=True, default='')
     author = models.ForeignKey(User, related_name="worlds")
     published = models.BooleanField(default=True)
-    objects = PostManager()
 
     class Meta:
         ordering = ["-created_at", "df_version"]

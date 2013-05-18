@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block page_title %}Add a World{% endblock %}
+
+{% block page_content %}
+
+<form action="addworld" method="post">{% csrf_token %}
+{{ form.as_p }}
+<input type="submit" value="Submit" />
+</form>
+
+
+
+{% endblock %}

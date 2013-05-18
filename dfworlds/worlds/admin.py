@@ -1,10 +1,10 @@
 from django.contrib import admin
-from worlds.models import World
+from .models import World
 
 
 class WorldAdmin(admin.ModelAdmin):
     date_hierarchy = 'created_at'
-    fields = ('published', 'title', 'slug', 'has_volcano', 'author', 'df_version')
+    #fields = ('published', 'title', 'slug', 'has_volcano', 'author', 'df_version')
     list_display = ['published', 'title', 'created_at']
     list_display_links = ['title']
     list_editable = ['published']
