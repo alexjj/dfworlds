@@ -1,10 +1,58 @@
 {% extends "base.html" %}
 
-{% block page_title %}{{ world.title }} | {% endblock %}
+{% block page_title %}{{ world.title }}{% endblock %}
 
 {% block page_content %}
-<h2>{{ world.title }}</h2>
-{{ world.worldgen|linebreaks }}
-<p>{{ world.created_at }}</p>
-<p><a href="{% url 'worlds:list' %}">&larr; World list</a></p>
+    <h3>Embark Location</h3>
+        <img src="{{ world.embark_loc_img }}">
+    <h3>World Stats:</h3>
+        <table class="table table-bordered table-striped">
+            <thead>
+            <tr>
+            <th>Attribute</th>
+            <th>Value</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>Embark Size</td>
+                <td>{{ world.embark_size }}</td>
+            </tr>
+            <tr>
+                <td>DF Version</td>
+                <td>{{ world.df_version }}</td>
+            </tr>
+            <tr>
+                <td>Volcano</td>
+                <td>{{ world.has_volcano }}</td>
+            </tr>
+            <tr>
+                <td>Aquifer</td>
+                <td>{{ world.has_aquifer }}</td>
+            </tr>
+            <tr>
+                <td>Water Source</td>
+                <td>{{ world.has_river }}</td>
+            </tr>
+            <tr>
+                <td>Iron</td>
+                <td>{{ world.has_iron }}</td>
+            </tr>
+            <tr>
+                <td>Candy</td>
+                <td>{{ world.has_candy }}</td>
+            </tr>
+            </tbody>
+        </table>
+    <h3>Prospect</h3>
+        <pre pre-scrollable>
+        {{ world.prospect }}
+        </pre>
+    <h3>WorldGen</h3>
+        <pre pre-scrollable>
+            {{ world.worldgen }}
+        </pre>
+<p>Submitted by {{ world.author }} at {{ world.created_at }}</p>
+<br>
+    <p><a href="{% url 'worlds:list' %}">&larr; World list</a></p>
 {% endblock %}

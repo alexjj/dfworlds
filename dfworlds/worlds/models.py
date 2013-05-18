@@ -11,23 +11,23 @@ class World(models.Model):
         ('v23', '23a'),
     )
     HAS_RIVER = (
-        ('river', 'River'),
-        ('brook', 'Brook'),
-        ('none', 'None'),
+        ('River', 'River'),
+        ('Brook', 'Brook'),
+        ('None', 'None'),
     )
     title = models.CharField(max_length=255)
     created_at = models.DateTimeField(auto_now_add=True, editable=False)
     df_version = models.CharField(max_length=3, choices=DF_VERSION)
-    has_volcano = models.BooleanField()
-    has_aquifer = models.BooleanField()
+    has_volcano = models.BooleanField(default=False)
+    has_aquifer = models.BooleanField(default=False)
     has_river = models.CharField(max_length=5, choices=HAS_RIVER)
     embark_size = models.CharField(max_length=5)
-    embark_loc_img = models.URLField()
-    has_iron = models.BooleanField()
-    has_candy = models.BooleanField()
-    worldgen = models.TextField()
-    prospect = models.TextField()
-    slug = models.SlugField(max_length=255, blank=True, default='')
+    embark_loc_img = models.URLField(default='')
+    has_iron = models.BooleanField(default=False)
+    has_candy = models.BooleanField(default=False)
+    worldgen = models.TextField(default='')
+    prospect = models.TextField(default='')
+    slug = models.SlugField(max_length=255, blank=True, default='', )
     author = models.ForeignKey(User, related_name="worlds")
     published = models.BooleanField(default=True)
 
