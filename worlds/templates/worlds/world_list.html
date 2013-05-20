@@ -23,11 +23,11 @@
             <td><a href="{{ world.get_absolute_url }}">{{ world.title }}</a></td>
             <td>{{ world.df_version }}</td>
             <td>{{ world.has_volcano }}</td>
-            <td>{{ world.has_quifer }}</td>
+            <td>{{ world.has_aquifer }}</td>
             <td>{{ world.has_river }}</td>
             <td>{{ world.embark_size }}</td>
             <td>{{ world.has_iron }}</td>
-            <td>{{ world.has_candy }}</td>
+            <td>{{ world.has_candy|yesno:"Yes,No" }}</td>
             <td>{{ world.author }}</td>
         </tr>
     {% empty %}

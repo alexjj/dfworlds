@@ -12,24 +12,40 @@ Will have a search function.
 
 ######Parameters per world
 
+§ - Optional
+
 * World Title
 * DF Version
-* Volcano:
+* Volcano
   * None
   * Flat
   * Regular
 * Aquifer
-  * True
-  * False
-* River
+  * Yes
+  * No
+* Surface Water
   * None
   * River
   * Brook
+  * Ocean side
+  * Lake
+  * Ponds
+  * Waterfall
 * Embark Size
 * Embark Location image link
-* Iron
+* {Iron, Copper, Silver, Gold, Platinum}
   * True
   * False
+* Stone
+  * Flux
+  * Obsidian
+  * Magma-safe
+* Terrain
+  * Completely flat
+  * Mostly flat
+  * Hill/mountain side
+  * Valley
+  * Shear cliff
 * Candy
   * True
   * False
@@ -37,11 +53,13 @@ Will have a search function.
 * Prospect Output
 * Description
 * Author's Name
-* Link to download pre-generated world
+* Link to download pre-generated world §
 * Surroundings
-  * Good - Serene Mirthful Joyous Wilds
-  * Evil - Sinister	Haunted	Terrifying
-  * Neutral - Calm Wilderness Untamed Wilds
+|  |**Benign**|**Neutral**|**Savage**|
+|---|---|---|---|
+|**Good**|Serene|Mirthful|Joyous Wilds|
+|**Neutral**|Calm|Wilderness|Untamed Wilds|
+|**Evil**|Sinister|Haunted|Terrifying|
 * World Size
   * Pocket (17)
   * Smaller (33)
@@ -58,3 +76,15 @@ Will have a search function.
 * Soil
   * Sand
   * Soil
+  * Clay
+  * None
+* History
+  * Very Short (5 yrs)
+  * Short (125 yrs)
+  * Medium (250 yrs)
+  * Long (550)
+  * Very Long (1050)
+
+
+We all know there are many ways to skin a cat...
+Nuances can be detailed in the description text, e.g. Yes, there's an aquifer but it's only in top half of map.
