@@ -55,4 +55,6 @@ Will have a search function.
   * Temperate
   * Cold
   * Freezing
-*
+* Soil
+  * Sand
+  * Soil
