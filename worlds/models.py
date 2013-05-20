@@ -3,6 +3,9 @@ from django.template.defaultfilters import slugify
 from django.contrib.auth.models import User
 
 
+class Dfversion(models.Model):
+    version_number = models.CharField()
+
 class World(models.Model):
     DF_VERSION = (
         ('v34', '34.11'),
@@ -17,7 +20,8 @@ class World(models.Model):
     )
     title = models.CharField(max_length=255)
     created_at = models.DateTimeField(auto_now_add=True, editable=False)
-    df_version = models.CharField(max_length=3, choices=DF_VERSION)
+    df_version = models.ForeignKey('Dfversion')
+    #df_version = models.CharField(max_length=3, choices=DF_VERSION)
     has_volcano = models.BooleanField(default=False)
     has_aquifer = models.BooleanField(default=False)
     has_river = models.CharField(max_length=5, choices=HAS_RIVER)
@@ -28,8 +32,8 @@ class World(models.Model):
     worldgen = models.TextField(default='')
     prospect = models.TextField(default='')
     slug = models.SlugField(max_length=255, blank=True, default='', editable=False)
-    author = models.ForeignKey(User, related_name="worlds")
-    published = models.BooleanField(default=True)
+    author = models.CharField(max_length=255, default='')
+    published = models.BooleanField(default=True, editable=False)
 
     class Meta:
         ordering = ["-created_at", "df_version"]
