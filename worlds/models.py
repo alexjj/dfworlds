@@ -22,7 +22,7 @@ class World(models.Model):
     )
     title = models.CharField(max_length=255)
     created_at = models.DateTimeField(auto_now_add=True, editable=False)
-    df_version = models.ForeignKey('Dfversion')
+    df_version = models.ForeignKey('Dfversion', default='0.34.11')
     #df_version = models.CharField(max_length=3, choices=DF_VERSION)
     has_volcano = models.BooleanField(default=False)
     has_aquifer = models.BooleanField(default=False)
