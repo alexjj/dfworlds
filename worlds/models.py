@@ -5,6 +5,9 @@ from django.template.defaultfilters import slugify
 class Dfversion(models.Model):
     version_number = models.CharField(max_length=255)
 
+    def __unicode__(self):
+        return self.version_number
+
 class World(models.Model):
     DF_VERSION = (
         ('v34', '34.11'),
