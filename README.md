@@ -55,11 +55,13 @@ Will have a search function.
 * Author's Name
 * Link to download pre-generated world §
 * Surroundings
+
 |  |**Benign**|**Neutral**|**Savage**|
 |---|---|---|---|
 |**Good**|Serene|Mirthful|Joyous Wilds|
 |**Neutral**|Calm|Wilderness|Untamed Wilds|
 |**Evil**|Sinister|Haunted|Terrifying|
+
 * World Size
   * Pocket (17)
   * Smaller (33)
