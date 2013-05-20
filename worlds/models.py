@@ -1,10 +1,9 @@
 from django.db import models
 from django.template.defaultfilters import slugify
-from django.contrib.auth.models import User
 
 
 class Dfversion(models.Model):
-    version_number = models.CharField()
+    version_number = models.CharField(max_length=255)
 
 class World(models.Model):
     DF_VERSION = (
