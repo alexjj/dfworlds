@@ -10,4 +10,5 @@ class WorldAdmin(admin.ModelAdmin):
     prepopulated_fields = {'slug': ('title',)}
     search_fields = ['title', 'df_version']
 
-admin.site.register(World, WorldAdmin, Dfversion)
+admin.site.register(World, WorldAdmin)
+admin.site.register(Dfversion)
