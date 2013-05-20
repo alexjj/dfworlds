@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import World
+from .models import World, Dfversion
 
 
 class WorldAdmin(admin.ModelAdmin):
@@ -10,4 +10,4 @@ class WorldAdmin(admin.ModelAdmin):
     prepopulated_fields = {'slug': ('title',)}
     search_fields = ['title', 'df_version']
 
-admin.site.register(World, WorldAdmin)
+admin.site.register(World, WorldAdmin, Dfversion)
