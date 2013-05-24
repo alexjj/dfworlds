@@ -82,11 +82,11 @@ class World(models.Model):
         (TERRIFY, 'Terrifying'),
     )
 
-    POCKET = 17
-    SMALLER = 33
-    SMALL = 65
-    MEDIUM = 129
-    LARGE = 257
+    POCKET = 'PK'
+    SMALLER = 'SR'
+    SMALL = 'LL'
+    MEDIUM = 'MD'
+    LARGE = 'LG'
 
     WORLD_SIZE = (
         (POCKET, 'Pocket'),
@@ -123,11 +123,11 @@ class World(models.Model):
         (CLAY, 'Clay'),
     )
 
-    VSHORT = 5
-    SHORT = 125
-    MEDIUMH = 250
-    LONG = 550
-    VLONG = 1050
+    VSHORT = 'VS'
+    SHORT = 'ST'
+    MEDIUMH = 'MH'
+    LONG = 'LG'
+    VLONG = 'VL'
 
     HISTORY = (
         (VSHORT, 'Very Short'),
@@ -138,13 +138,13 @@ class World(models.Model):
     )
     title = models.CharField(max_length=255)
     created_at = models.DateTimeField(auto_now_add=True, editable=False)
-    df_version = models.ForeignKey('Dfversion', default='0.34.11')
+    df_version = models.ManyToManyField(Dfversion)
     has_volcano = models.CharField(max_length=2, choices=VOLCANO)
     has_aquifer = models.BooleanField(default=False)
     has_water = models.CharField(max_length=2, choices=WATER)
     embark_size = models.CharField(max_length=5)
     embark_loc_img = models.URLField(default='')
-    download_word = models.URLField(default='')
+    download_world = models.URLField(default='', blank=True)
     has_iron = models.BooleanField(default=False)
     has_copper = models.BooleanField(default=False)
     has_silver = models.BooleanField(default=False)
@@ -158,14 +158,14 @@ class World(models.Model):
     surroundings = models.CharField(max_length=2, choices=SURROUNDINGS)
     terrain = models.CharField(max_length=2, choices=TERRAIN)
     stone = models.CharField(max_length=2, choices=STONE)
-    worlddescription = models.TextField(default='')
-    worldgen = models.TextField(default='')
+    world_description = models.TextField(default='')
+    world_gen = models.TextField(default='')
     prospect = models.TextField(default='')
     slug = models.SlugField(max_length=255, blank=True, default='', editable=False)
     author = models.CharField(max_length=255, default='')
 
     class Meta:
-        ordering = ["-created_at", "df_version"]
+        ordering = ["-created_at"]
 
     def __unicode__(self):
         return self.title
