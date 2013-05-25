@@ -8,25 +8,27 @@ class Dfversion(models.Model):
     def __unicode__(self):
         return self.version_number
 
+
+class Stonetype(models.Model):
+    stone_type = models.CharField(max_length=255)
+
+    def __unicode__(self):
+        return self.stone_type
+
+class Surface_water(models.Model):
+    surface_water = models.CharField(max_length=255)
+
+    def __unicode__(self):
+        return self.surface_water
+
+class Soil_type(models.Model):
+    soil_types = models.CharField(max_length=255)
+
+    def __unicode__(self):
+        return self.soil_types
+
 class World(models.Model):
     NONE = 'NO'
-    RIVER = 'RV'
-    BROOK = 'BK'
-    OCEAN = 'OC'
-    LAKE = 'LK'
-    PONDS = 'PD'
-    WATERFALL = 'WF'
-
-    WATER = (
-        (NONE, 'None'),
-        (RIVER, 'River'),
-        (BROOK, 'Brook'),
-        (OCEAN, 'Ocean'),
-        (LAKE, 'Lake'),
-        (PONDS, 'Ponds'),
-        (WATERFALL, 'Waterfall')
-    )
-
     FLAT = 'FT'
     REGULAR = 'RG'
 
@@ -34,16 +36,6 @@ class World(models.Model):
         (NONE, 'None'),
         (FLAT, 'Flat'),
         (REGULAR, 'Regular'),
-    )
-
-    FLUX = 'FX'
-    OBSIDIAN = 'OB'
-    MAGMASAFE = 'MS'
-
-    STONE = (
-        (FLUX, 'Flux'),
-        (OBSIDIAN, 'Obsidian'),
-        (MAGMASAFE, 'Magma-Safe'),
     )
 
     CFLAT = 'CF'
@@ -112,17 +104,6 @@ class World(models.Model):
         (FREEZE, 'Freezing'),
     )
 
-    SAND = 'SD'
-    SOIL = 'SL'
-    CLAY = 'CY'
-
-    HAS_SOIL = (
-        (NONE, 'None'),
-        (SAND, 'Sand'),
-        (SOIL, 'Soil'),
-        (CLAY, 'Clay'),
-    )
-
     VSHORT = 'VS'
     SHORT = 'ST'
     MEDIUMH = 'MH'
@@ -138,10 +119,10 @@ class World(models.Model):
     )
     title = models.CharField(max_length=255)
     created_at = models.DateTimeField(auto_now_add=True, editable=False)
-    df_version = models.ManyToManyField(Dfversion)
+    df_version = models.ForeignKey(Dfversion, default='0.34.11')
     has_volcano = models.CharField(max_length=2, choices=VOLCANO)
     has_aquifer = models.BooleanField(default=False)
-    has_water = models.CharField(max_length=2, choices=WATER)
+    has_water = models.ManyToManyField(Surface_water, default='None')
     embark_size = models.CharField(max_length=5)
     embark_loc_img = models.URLField(default='')
     download_world = models.URLField(default='', blank=True)
@@ -151,13 +132,13 @@ class World(models.Model):
     has_gold = models.BooleanField(default=False)
     has_platinum = models.BooleanField(default=False)
     has_candy = models.BooleanField(default=False)
-    has_soil = models.CharField(max_length=2, choices=HAS_SOIL)
+    has_soil = models.ManyToManyField(Soil_type, default='None')
     history = models.CharField(max_length=2, choices=HISTORY)
     climate = models.CharField(max_length=2, choices=CLIMATE)
     world_size = models.CharField(max_length=2, choices=WORLD_SIZE)
     surroundings = models.CharField(max_length=2, choices=SURROUNDINGS)
     terrain = models.CharField(max_length=2, choices=TERRAIN)
-    stone = models.CharField(max_length=2, choices=STONE)
+    stone = models.ManyToManyField(Stonetype, default='None')
     world_description = models.TextField(default='')
     world_gen = models.TextField(default='')
     prospect = models.TextField(default='')

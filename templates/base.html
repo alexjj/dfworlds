@@ -66,9 +66,11 @@
       <h1>{% block page_title %}Welcome to DF Worlds!{% endblock page_title %}</h1>
 
       {% block page_content %}
-        <p>A great collection of worlds await...</p>
+        <p>A great collection of {{ world_list|length }} worlds await...</p>
           <img src="{{ STATIC_URL }}img/dfworld_small.png">
-
+      <h3>Help</h3>
+          Problems or errors? Submit an issue on <a href="https://github.com/alexjj/dfworlds/issues"><i class="icon-github-sign"></i> Github</a>
+      <br>
       {% endblock page_content %}
 
     </div> <!-- /container -->

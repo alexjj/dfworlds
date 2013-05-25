@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import World, Dfversion
+from .models import World, Dfversion, Stonetype, Soil_type, Surface_water
 
 
 class WorldAdmin(admin.ModelAdmin):
@@ -7,8 +7,10 @@ class WorldAdmin(admin.ModelAdmin):
     list_display = ['title', 'created_at']
     list_display_links = ['title']
     list_filter = ['author']
-    prepopulated_fields = {'slug': ('title',)}
     search_fields = ['title', 'df_version']
 
 admin.site.register(World, WorldAdmin)
 admin.site.register(Dfversion)
+admin.site.register(Stonetype)
+admin.site.register(Surface_water)
+admin.site.register(Soil_type)
