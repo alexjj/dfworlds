@@ -13,6 +13,7 @@ Will have a search function.
 ######Parameters per world
 
 § - Optional
+± - Select many
 
 * World Title
 * DF Version
@@ -23,7 +24,7 @@ Will have a search function.
 * Aquifer
   * Yes
   * No
-* Surface Water
+* Surface Water ±
   * None
   * River
   * Brook
@@ -36,7 +37,7 @@ Will have a search function.
 * {Iron, Copper, Silver, Gold, Platinum}
   * True
   * False
-* Stone
+* Stone ±
   * Flux
   * Obsidian
   * Magma-safe
@@ -75,7 +76,7 @@ Will have a search function.
   * Temperate
   * Cold
   * Freezing
-* Soil
+* Soil ±
   * Sand
   * Soil
   * Clay
