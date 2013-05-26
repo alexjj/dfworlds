@@ -88,11 +88,11 @@ class World(models.Model):
     LARGE = 'LG'
 
     WORLD_SIZE = (
-        (POCKET, 'Pocket'),
-        (SMALLER, 'Smaller'),
-        (SMALL, 'Small'),
-        (MEDIUM, 'Medium'),
-        (LARGE, 'Large'),
+        (POCKET, '17x17'),
+        (SMALLER, '33x33'),
+        (SMALL, '65x65'),
+        (MEDIUM, '129x129'),
+        (LARGE, '257x257'),
     )
 
     SCORCH = 'SG'
