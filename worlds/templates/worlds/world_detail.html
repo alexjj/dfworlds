@@ -32,19 +32,47 @@
                     </tr>
                     <tr>
                         <td>Aquifer</td>
-                        <td>{{ world.has_aquifer|yesno }}</td>
+                        <td>{{ world.has_aquifer|yesno:"Yes,No" }}</td>
                     </tr>
                     <tr>
                         <td>Water Source</td>
-                        <td>{% for has_water in world.has_water.all %}{{ has_water }}, {% endfor %}</td>
+                        <td>{% for has_water in world.has_water.all %}{{ has_water }}{% if not forloop.last %}, {% endif %}{% endfor %}</td>
                     </tr>
                     <tr>
-                        <td>Iron</td>
-                        <td>{{ world.has_iron|yesno }}</td>
+                        <td>Metals</td>
+                        <td>{% for metals in world.metals.all %}{{ metals }}{% if not forloop.last %}, {% endif %}{% endfor %}</td>
                     </tr>
                     <tr>
                         <td>Candy</td>
-                        <td>{{ world.has_candy|yesno }}</td>
+                        <td>{{ world.has_candy|yesno:"Yes,No" }}</td>
+                    </tr>
+                    <tr>
+                        <td>Soil</td>
+                        <td>{% for has_soil in world.has_soil.all %}{{ has_soil }}{% if not forloop.last %}, {% endif %}{% endfor %}</td>
+                    </tr>
+                    <tr>
+                        <td>Stone</td>
+                        <td>{% for stone in world.stone.all %}{{ stone }}{% if not forloop.last %}, {% endif %}{% endfor %}</td>
+                    </tr>
+                    <tr>
+                        <td>Terrain</td>
+                        <td>{{ world.get_terrain_display }}</td>
+                    </tr>
+                    <tr>
+                        <td>Climate</td>
+                        <td>{{ world.get_climate_display }}</td>
+                    </tr>
+                    <tr>
+                        <td>Surroundings</td>
+                        <td>{{ world.get_surroundings_display }}</td>
+                    </tr>
+                    <tr>
+                        <td>World Size</td>
+                        <td>{{ world.get_world_size_display }}</td>
+                    </tr>
+                    <tr>
+                        <td>History</td>
+                        <td>{{ world.get_history_display }}</td>
                     </tr>
                     </tbody>
                 </table>
@@ -52,6 +80,11 @@
                 <pre>{{ world.prospect }}</pre>
             <h3>WorldGen</h3>
                 <pre>{{ world.world_gen }}</pre>
+            <h3>Download Generated World</h3>
+            <p>{% if world.download_world %}
+                <a href="{{ world.download_world }}" class="btn btn-success">Download!</a>
+            {% else %}<a href="#" class="btn btn-warning disabled">No link given</a>
+            {% endif %}</p>
             <p>Submitted by {{ world.author }} at {{ world.created_at }}</p>
             <br>
             <p><a href="{% url 'worlds:list' %}">&larr; World list</a></p>

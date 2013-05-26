@@ -2,15 +2,19 @@
 {% block page_title %}Add a World{% endblock %}
 
 {% block page_content %}
-
+<div class=row-fluid>
+<div class=span8>
 <form action="{% url 'worlds:addworld' %}" method="post">{% csrf_token %}
 <fieldset>
-    {{ form.as_p }}
-
+    <table class="table table-bordered table-striped">
+    {{ form.as_table }}
+    </table>
 </fieldset>
-<input type="submit" value="Submit" />
+<input class="btn btn-primary" type="submit" value="Submit" />
 </form>
-
+</div>
+<div class=span4></div>
+</div>
 
 
 {% endblock %}
