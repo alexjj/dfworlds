@@ -66,11 +66,30 @@
       <h1>{% block page_title %}Welcome to DF Worlds!{% endblock page_title %}</h1>
 
       {% block page_content %}
-        <p>A great collection of {{ world_list|length }} worlds await...</p>
-          <img src="{{ STATIC_URL }}img/dfworld_small.png">
-      <h3>Help</h3>
-          Problems or errors? Submit an issue on <a href="https://github.com/alexjj/dfworlds/issues"><i class="icon-github-sign"></i> Github</a>
-      <br>
+          <div class=row-fluid>
+            <div class=span8>
+                <p>A great collection of {{ world_list|length }} worlds await...</p>
+             <img src="{{ STATIC_URL }}img/dfworld_small.png">
+            </div>
+            <div class=span4>
+                <div class="well">
+                    <h3>About</h3>
+                    <p>A very simple website to store amazing DF worlds.<br>
+                    Built using:
+                    <ul>
+                        <li><a href="https://www.djangoproject.com/" target=_blank>Django</a></li>
+                        <li><a href="http://twitter.github.io/bootstrap/" target=_blank>Bootstrap</a></li>
+                        <li><a href="https://www.heroku.com/" target=_blank>Heroku</a></li>
+                        <li><a href="http://datatables.net/" target=_blank>DataTables</a></li>
+                    </ul>
+                    </p>
+                </div>
+              <div class="well">
+                <h3>Help</h3>
+                <p>Problems or errors? Submit an issue on <a href="https://github.com/alexjj/dfworlds/issues"><i class="icon-github-sign"></i> Github</a></p>
+              </div>
+             </div>
+          </div>
       {% endblock page_content %}
 
     </div> <!-- /container -->

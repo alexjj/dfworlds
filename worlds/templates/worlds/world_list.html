@@ -3,6 +3,7 @@
 {% block page_title %}World List{% endblock %}
 
 {% block page_content %}
+    <p>Select key information is listed in the table below. For further details of individual worlds click on their title.</p><br>
 <table cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered" id="worldlist">
     <thead>
         <tr>
@@ -30,7 +31,7 @@
             <td>{{ world.has_aquifer|yesno:"Yes,No" }}</td>
             <td>{% for has_water in world.has_water.all %}{{ has_water }}, {% endfor %}</td>
             <td>{{ world.embark_size }}</td>
-            <td>{% for metal in world.metal.all %}{{ metal }}, {% endfor %}</td>
+            <td>{% for metals in world.metals.all %}{{ metals }}, {% endfor %}</td>
             <td>{{ world.has_candy|yesno:"Yes,No" }}</td>
             <td>{% for has_soil in world.has_soil.all %}{{ has_soil }}, {% endfor %}</td>
             <td>{% for stone in world.stone.all %}{{ stone }}, {% endfor %}</td>
