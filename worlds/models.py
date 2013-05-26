@@ -27,6 +27,13 @@ class Soil_type(models.Model):
     def __unicode__(self):
         return self.soil_types
 
+
+class Metal(models.Model):
+    metal = models.CharField(max_length=255)
+
+    def __unicode__(self):
+        return self.metal
+
 class World(models.Model):
     NONE = 'NO'
     FLAT = 'FT'
@@ -119,18 +126,14 @@ class World(models.Model):
     )
     title = models.CharField(max_length=255)
     created_at = models.DateTimeField(auto_now_add=True, editable=False)
-    df_version = models.ForeignKey(Dfversion, default='0.34.11')
+    df_version = models.ForeignKey(Dfversion, default=4)
     has_volcano = models.CharField(max_length=2, choices=VOLCANO)
     has_aquifer = models.BooleanField(default=False)
     has_water = models.ManyToManyField(Surface_water, default='None')
     embark_size = models.CharField(max_length=5)
-    embark_loc_img = models.URLField(default='')
-    download_world = models.URLField(default='', blank=True)
-    has_iron = models.BooleanField(default=False)
-    has_copper = models.BooleanField(default=False)
-    has_silver = models.BooleanField(default=False)
-    has_gold = models.BooleanField(default=False)
-    has_platinum = models.BooleanField(default=False)
+    embark_loc_img = models.URLField(default='', help_text='Try imgur.com for hosting')
+    download_world = models.URLField(default='', blank=True, help_text='A link to the zip of the generated world (optional)')
+    metals = models.ManyToManyField(Metal)
     has_candy = models.BooleanField(default=False)
     has_soil = models.ManyToManyField(Soil_type, default='None')
     history = models.CharField(max_length=2, choices=HISTORY)

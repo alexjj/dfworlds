@@ -10,11 +10,15 @@
             <th>DF Ver</th>
             <th>Volcano</th>
             <th>Aquifer</th>
-            <th>River</th>
+            <th>Surface Water</th>
             <th>Embark Size</th>
-            <th>Iron</th>
+            <th>Metals</th>
             <th>Candy</th>
-            <th>Author</th>
+            <th>Soil</th>
+            <th>Stone</th>
+            <th>Climate</th>
+            <th>Surroundings</th>
+            <th>Terrain</th>
         </tr>
     </thead>
     <tbody>
@@ -23,12 +27,16 @@
             <td><a href="{{ world.get_absolute_url }}">{{ world.title }}</a></td>
             <td>{{ world.df_version }}</td>
             <td>{{ world.get_has_volcano_display }}</td>
-            <td>{{ world.has_aquifer }}</td>
-            <td>{{ world.get_has_water_display }}</td>
+            <td>{{ world.has_aquifer|yesno:"Yes,No" }}</td>
+            <td>{% for has_water in world.has_water.all %}{{ has_water }}, {% endfor %}</td>
             <td>{{ world.embark_size }}</td>
-            <td>{{ world.has_iron }}</td>
+            <td>{% for metal in world.metal.all %}{{ metal }}, {% endfor %}</td>
             <td>{{ world.has_candy|yesno:"Yes,No" }}</td>
-            <td>{{ world.author }}</td>
+            <td>{% for has_soil in world.has_soil.all %}{{ has_soil }}, {% endfor %}</td>
+            <td>{% for stone in world.stone.all %}{{ stone }}, {% endfor %}</td>
+            <td>{{ world.get_climate_display }}</td>
+            <td>{{ world.get_surroundings_display }}</td>
+            <td>{{ world.get_terrain_display }}</td>
         </tr>
     {% empty %}
     <tr><td colspan="0">Sorry , no worlds yet...</td></tr>

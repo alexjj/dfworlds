@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import World, Dfversion, Stonetype, Soil_type, Surface_water
+from .models import World, Dfversion, Stonetype, Soil_type, Surface_water, Metal
 
 
 class WorldAdmin(admin.ModelAdmin):
@@ -14,3 +14,4 @@ admin.site.register(Dfversion)
 admin.site.register(Stonetype)
 admin.site.register(Surface_water)
 admin.site.register(Soil_type)
+admin.site.register(Metal)
