@@ -118,11 +118,11 @@ class World(models.Model):
     VLONG = 'VL'
 
     HISTORY = (
-        (VSHORT, 'Very Short'),
-        (SHORT, 'Short'),
-        (MEDIUMH, 'Medium'),
-        (LONG, 'Long'),
-        (VLONG, 'Very Long'),
+        (VSHORT, '5 Years'),
+        (SHORT, '125 Years'),
+        (MEDIUMH, '250 Years'),
+        (LONG, '550 Years'),
+        (VLONG, '1050 Years'),
     )
     title = models.CharField(max_length=255, help_text='Name of your world')
     created_at = models.DateTimeField(auto_now_add=True, editable=False)
