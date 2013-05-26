@@ -124,14 +124,14 @@ class World(models.Model):
         (LONG, 'Long'),
         (VLONG, 'Very Long'),
     )
-    title = models.CharField(max_length=255)
+    title = models.CharField(max_length=255, help_text='Name of your world')
     created_at = models.DateTimeField(auto_now_add=True, editable=False)
-    df_version = models.ForeignKey(Dfversion, default=4)
+    df_version = models.ForeignKey(Dfversion, default=4, help_text='Version it generates on')
     has_volcano = models.CharField(max_length=2, choices=VOLCANO)
     has_aquifer = models.BooleanField(default=False)
     has_water = models.ManyToManyField(Surface_water, default='None')
-    embark_size = models.CharField(max_length=5)
-    embark_loc_img = models.URLField(default='', help_text='Try imgur.com for hosting')
+    embark_size = models.CharField(max_length=5, help_text='e.g. 3x3')
+    embark_loc_img = models.URLField(default='', help_text='Screenshot of embark location. Try imgur.com for hosting')
     download_world = models.URLField(default='', blank=True, help_text='A link to the zip of the generated world (optional)')
     metals = models.ManyToManyField(Metal)
     has_candy = models.BooleanField(default=False)
@@ -142,11 +142,11 @@ class World(models.Model):
     surroundings = models.CharField(max_length=2, choices=SURROUNDINGS)
     terrain = models.CharField(max_length=2, choices=TERRAIN)
     stone = models.ManyToManyField(Stonetype, default='None')
-    world_description = models.TextField(default='')
-    world_gen = models.TextField(default='')
-    prospect = models.TextField(default='')
+    world_description = models.TextField(default='', help_text='Tell us about your world, and any other details not captured.')
+    world_gen = models.TextField(default='', help_text='The parameters to create this world')
+    prospect = models.TextField(default='', help_text='Output of prospect hell using dfhack. No dfhack? Just say so.')
     slug = models.SlugField(max_length=255, blank=True, default='', editable=False)
-    author = models.CharField(max_length=255, default='')
+    author = models.CharField(max_length=255, default='', help_text='Name of world creator')
 
     class Meta:
         ordering = ["-created_at"]
