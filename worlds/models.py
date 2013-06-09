@@ -56,7 +56,7 @@ class World(models.Model):
         (MFLAT, 'Mostly Flat'),
         (HILL, 'Hill/Mountain Side'),
         (VALLEY, 'Valley'),
-        (CLIFF, 'Shear Cliff'),
+        (CLIFF, 'Sheer Cliff'),
     )
 
     SERENE = 'SR'
