@@ -180,7 +180,6 @@ $(document).ready(function() {
 	$('pre').prev('h3').each(function(n, el){
 		var h3 = $(el)
 		var pre = h3.next('pre');
-		console.log(h3,pre);
 		var a = $('<a>').attr({href:'#'}).css({'font-size':'.5em', 'padding-left':'.75em'});
 		var select_link = a.clone().appendTo(h3).text('Select all').click(function(e){
 			e.preventDefault();
