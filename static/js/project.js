@@ -159,3 +159,38 @@ $(document).ready(function() {
 		}
 	} );
 } );
+
+/* Select/copy links for worldgen, prospect, etc. */
+$(document).ready(function() {
+	function SelectText(element) {
+		var doc = document,
+			range, selection;    
+		if (doc.body.createTextRange) {
+		    range = document.body.createTextRange();
+		    range.moveToElementText(element);
+		    range.select();
+		} else if (window.getSelection) {
+		    selection = window.getSelection();        
+		    range = document.createRange();
+		    range.selectNodeContents(element);
+		    selection.removeAllRanges();
+		    selection.addRange(range);
+		}
+	}
+	$('pre').prev('h3').each(function(n, el){
+		var h3 = $(el)
+		var pre = h3.next('pre');
+		var a = $('<a>').attr({href:'#'}).css({'font-size':'.5em', 'padding-left':'.75em'});
+		var select_link = a.clone().appendTo(h3).text('Select all').click(function(e){
+			e.preventDefault();
+			SelectText(pre[0]);
+		});
+		var hide_link = a.clone().appendTo(h3).text('Hide').click(function(e){
+			e.preventDefault();
+			pre.slideToggle(250);
+			$(this).text($(this).text()=='Hide'?'Show':'Hide');
+		});
+	});
+});
+
+
