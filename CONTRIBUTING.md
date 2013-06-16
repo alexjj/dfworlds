@@ -2,8 +2,6 @@
 None yet...keep things simple :)
 
 ###Contributors
-alexjj
-
-wengole
-
-lethosor
+* [alexjj](https://github.com/alexjj)
+* [wengole](https://github.com/wengole)
+* [lethosor](https://github.com/lethosor)
