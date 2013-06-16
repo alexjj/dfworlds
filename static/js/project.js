@@ -181,10 +181,15 @@ $(document).ready(function() {
 		var h3 = $(el)
 		var pre = h3.next('pre');
 		console.log(h3,pre);
-		var select_link = $('<a>').attr({href:'#'}).css({'font-size':'.5em', 'padding-left':'.5em'})
-		  .appendTo(h3).text('Select all').click(function(e){
+		var a = $('<a>').attr({href:'#'}).css({'font-size':'.5em', 'padding-left':'.5em'});
+		var select_link = a.clone().appendTo(h3).text('Select all').click(function(e){
 			e.preventDefault();
 			SelectText(pre[0]);
+		});
+		var hide_link = a.clone().appendTo(h3).text('Hide').click(function(e){
+			e.preventDefault();
+			pre.slideToggle(250);
+			$(this).text($(this).text()=='Hide'?'Show':'Hide');
 		});
 	});
 });
