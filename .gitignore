@@ -18,3 +18,9 @@ build
 *.log
 
 .idea/
+
+# Project files
+*.komodoproject
+
+# OS-Specific files
+.DS_Store

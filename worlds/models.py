@@ -144,7 +144,7 @@ class World(models.Model):
     stone = models.ManyToManyField(Stonetype, default='None')
     world_description = models.TextField(default='', help_text='Tell us about your world, and any other details not captured.')
     world_gen = models.TextField(default='', help_text='The parameters to create this world')
-    prospect = models.TextField(default='', help_text='Output of prospect hell using dfhack, see wiki for instructions. No dfhack? Just say so.')
+    prospect = models.TextField(default='', help_text='Output of prospect hell using dfhack, see <a href="https://github.com/alexjj/dfworlds/wiki" target=_blank>wiki</a> for instructions. No dfhack? Just say so.')
     slug = models.SlugField(max_length=255, blank=True, default='', editable=False)
     author = models.CharField(max_length=255, default='', help_text='Name of world creator')
 
