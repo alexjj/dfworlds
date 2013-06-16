@@ -182,3 +182,8 @@ div.DTFC_LeftBodyWrapper tbody tr:first-child td {
 div.DTFC_LeftFootWrapper table {
 	border-top: none;
 }
+
+/* Error message color */
+ul.errorlist li {
+	color: #cc0000;
+}
