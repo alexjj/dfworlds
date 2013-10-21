@@ -22,6 +22,7 @@ def get_env_setting(setting):
 
 INSTALLED_APPS += ('gunicorn',)
 
+ALLOWED_HOSTS =['dfworlds.herokuapp.com','dfworlds.alexjj.com','dfworlds.dwarffortress.org']
 ########## EMAIL CONFIGURATION
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#email-backend
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
@@ -56,7 +57,7 @@ DATABASES = {'default': dj_database_url.config()}
 
 ########## CACHE CONFIGURATION
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#caches
-CACHES = {}
+#CACHES = {}
 ########## END CACHE CONFIGURATION
 
 

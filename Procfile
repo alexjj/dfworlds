@@ -1,1 +1,1 @@
-web: gunicorn dfworlds.wsgi
+web: python manage.py collectstatic --noinput; gunicorn dfworlds.wsgi

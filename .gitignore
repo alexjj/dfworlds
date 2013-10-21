@@ -17,4 +17,14 @@ build
 # Logs:
 *.log
 
+<<<<<<< HEAD
 *.DS_Store
+=======
+.idea/
+
+# Project files
+*.komodoproject
+
+# OS-Specific files
+.DS_Store
+>>>>>>> 6a080150835913012617b7cf777bc666637acb5f

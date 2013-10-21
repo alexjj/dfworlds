@@ -3,56 +3,92 @@
 {% block page_title %}{{ world.title }}{% endblock %}
 
 {% block page_content %}
-    <h3>Embark Location</h3>
-        <img src="{{ world.embark_loc_img }}">
-    <h3>World Stats:</h3>
-        <table class="table table-bordered table-striped">
-            <thead>
-            <tr>
-            <th>Attribute</th>
-            <th>Value</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-                <td>Embark Size</td>
-                <td>{{ world.embark_size }}</td>
-            </tr>
-            <tr>
-                <td>DF Version</td>
-                <td>{{ world.df_version }}</td>
-            </tr>
-            <tr>
-                <td>Volcano</td>
-                <td>{{ world.has_volcano }}</td>
-            </tr>
-            <tr>
-                <td>Aquifer</td>
-                <td>{{ world.has_aquifer }}</td>
-            </tr>
-            <tr>
-                <td>Water Source</td>
-                <td>{{ world.has_river }}</td>
-            </tr>
-            <tr>
-                <td>Iron</td>
-                <td>{{ world.has_iron }}</td>
-            </tr>
-            <tr>
-                <td>Candy</td>
-                <td>{{ world.has_candy }}</td>
-            </tr>
-            </tbody>
-        </table>
-    <h3>Prospect</h3>
-        <pre>
-        {{ world.prospect }}
-        </pre>
-    <h3>WorldGen</h3>
-        <pre>
-            {{ world.worldgen }}
-        </pre>
-<p>Submitted by {{ world.author }} at {{ world.created_at }}</p>
-<br>
-    <p><a href="{% url 'worlds:list' %}">&larr; World list</a></p>
+    <div class=row-fluid>
+        <div class=span8>
+          <h3>Description</h3>
+            {{ world.world_description|linebreaks }}
+          <h3>Embark Location</h3>
+            <img src="{{ world.embark_loc_img }}">
+          <h3>World Stats:</h3>
+                <table class="table table-bordered table-striped">
+                    <thead>
+                    <tr>
+                    <th>Attribute</th>
+                    <th>Value</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>Embark Size</td>
+                        <td>{{ world.embark_size }}</td>
+                    </tr>
+                    <tr>
+                        <td>DF Version</td>
+                        <td>{{ world.df_version }}</td>
+                    </tr>
+                    <tr>
+                        <td>Volcano</td>
+                        <td>{{ world.get_has_volcano_display }}</td>
+                    </tr>
+                    <tr>
+                        <td>Aquifer</td>
+                        <td>{{ world.has_aquifer|yesno:"Yes,No" }}</td>
+                    </tr>
+                    <tr>
+                        <td>Water Source</td>
+                        <td>{% for has_water in world.has_water.all %}{{ has_water }}{% if not forloop.last %}, {% endif %}{% endfor %}</td>
+                    </tr>
+                    <tr>
+                        <td>Metals</td>
+                        <td>{% for metals in world.metals.all %}{{ metals }}{% if not forloop.last %}, {% endif %}{% endfor %}</td>
+                    </tr>
+                    <tr>
+                        <td>Candy</td>
+                        <td>{{ world.has_candy|yesno:"Yes,No" }}</td>
+                    </tr>
+                    <tr>
+                        <td>Soil</td>
+                        <td>{% for has_soil in world.has_soil.all %}{{ has_soil }}{% if not forloop.last %}, {% endif %}{% endfor %}</td>
+                    </tr>
+                    <tr>
+                        <td>Stone</td>
+                        <td>{% for stone in world.stone.all %}{{ stone }}{% if not forloop.last %}, {% endif %}{% endfor %}</td>
+                    </tr>
+                    <tr>
+                        <td>Terrain</td>
+                        <td>{{ world.get_terrain_display }}</td>
+                    </tr>
+                    <tr>
+                        <td>Climate</td>
+                        <td>{{ world.get_climate_display }}</td>
+                    </tr>
+                    <tr>
+                        <td>Surroundings</td>
+                        <td>{{ world.get_surroundings_display }}</td>
+                    </tr>
+                    <tr>
+                        <td>World Size</td>
+                        <td>{{ world.get_world_size_display }}</td>
+                    </tr>
+                    <tr>
+                        <td>History</td>
+                        <td>{{ world.get_history_display }}</td>
+                    </tr>
+                    </tbody>
+                </table>
+            <h3>Prospect</h3>
+                <pre>{{ world.prospect }}</pre>
+            <h3>WorldGen</h3>
+                <pre>{{ world.world_gen }}</pre>
+            <h3>Download Generated World</h3>
+            <p>{% if world.download_world %}
+                <a href="{{ world.download_world }}" class="btn btn-success">Download!</a>
+            {% else %}<a href="#" class="btn btn-warning disabled">No link given</a>
+            {% endif %}</p>
+            <p>Submitted by {{ world.author }} at {{ world.created_at }}</p>
+            <br>
+            <p><a href="{% url 'worlds:list' %}">&larr; World list</a></p>
+        </div>
+        <div class=span4></div>
+    </div>
 {% endblock %}
