@@ -2,7 +2,7 @@ dfworlds
 ========
 
 Dwarf Fortress Worlds Website:
-http://worldgen.dwarffortress.org
+http://dfworlds.alexjj.com/
 
 A database website allowing users to submit worldgens with associated stats.
 
