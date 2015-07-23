@@ -90,5 +90,5 @@ Will have a search function.
   * Very Long (1050)
 
 
-We all know there are many ways to skin a cat...
+We all know there are many ways to skin a cat and make a delicious pie from its bones...
 Nuances can be detailed in the description text, e.g. Yes, there's an aquifer but it's only in top half of map.
